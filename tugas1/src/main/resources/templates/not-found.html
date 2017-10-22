@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>Tidak Ditemukan</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet">
+</link>
+
+<style th:replace="fragments/fragment :: style"></style>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<h1>Tidak ditemukan !!!</h1>
+			<!-- IF Condition -->
+			<div th:if="${status} == 'caripenduduk'">
+				<h3 th:text="'NIK = ' + ${id} + ' tidak ditemukan'">Student NPM</h3>
+			</div>
+			<!-- ELSE -->
+			<div th:if="${status} == 'carikeluarga'">
+				<h3 th:text="'NKK = ' + ${id} + ' tidak ditemukan'">Student NPM</h3>
+			</div>
+			<!-- ELSE -->
+			<div th:if="${status} == 'tambahpenduduk'">
+				<h3 th:text="'NKK = ' + ${id} + ' belum terdaftar'">Student NPM</h3>
+			</div>
+			<!-- ELSE -->
+			<div th:if="${status} == 'ubahpenduduk'">
+				<h3 th:text="'NKK = ' + ${id} + ' belum terdaftar'">Student NPM</h3>
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

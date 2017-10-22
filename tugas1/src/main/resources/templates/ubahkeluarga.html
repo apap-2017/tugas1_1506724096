@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>Ubah Keluarga</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet">
+</link>
+<style th:replace="fragments/fragment :: style"></style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<form class="form-horizontal" action="/keluarga/ubah/${nkk}"
+				th:object="${keluarga}" method="post">
+				<div class="form-group">
+					<p class="control-label col-sm-2"></p>
+					<div class="col-sm-10">
+						<h2>Ubah Keluarga</h2>
+					</div>
+				</div>
+				<hr />
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="id">ID :</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="id" name="id"
+							readonly="true" th:field="*{id}" />
+					</div>
+				</div>
+				<input type="hidden" class="form-control" id="nomor_kk"
+					name="nomor_kk" readonly="true" th:field="*{nomor_kk}" />
+				<!-- 
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="nomor_kk">NKK :</label>
+					<div class="col-sm-4">
+						
+					</div>
+				</div>
+				 -->
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="alamat">Alamat :</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="alamat" name="alamat"
+							placeholder="Alamat Lengkap" th:field="*{alamat}" required="true" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="rt">RT :</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="rt" name="rt"
+							placeholder="RT" th:field="*{rt}" required="true" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="rw">RW :</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="rw" name="rw"
+							placeholder="RW" th:field="*{rw}" required="true" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="id_kelurahan">Kelurahan
+						:</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="id_kelurahan"
+							name="id_kelurahan" th:field="*{id_kelurahan}"
+							required="required">
+							<option th:value="1">PULAU TIDUNG</option>
+							<option th:value="2">PULAU PARI</option>
+							<option th:value="3">PULAU UNTUNG JAWA</option>
+							<option th:value="4">PULAU PANGGANG</option>
+							<option th:value="5">PULAU KELAPA</option>
+							<option th:value="6">PULAU HARAPAN</option>
+							<option th:value="7">CIPEDAK</option>
+							<option th:value="8">SRENGSENG SAWAH</option>
+							<option th:value="9">CIGANJUR</option>
+							<option th:value="10">JAGAKARSA</option>
+							<option th:value="11">LENTENG AGUNG</option>
+							<option th:value="12">TANJUNG BARAT</option>
+							<option th:value="13">CILANDAK TIMUR</option>
+							<option th:value="14">RAGUNAN</option>
+							<option th:value="15">KEBAGUSAN</option>
+							<option th:value="16">PASAR MINGGU</option>
+							<option th:value="17">JATI PADANG</option>
+							<option th:value="18">PEJATEN BARAT</option>
+							<option th:value="19">PEJATEN TIMUR</option>
+							<option th:value="20">LEBAK BULUS</option>
+							<option th:value="21">PONDOK LABU</option>
+							<option th:value="22">CILANDAK BARAT</option>
+							<option th:value="23">GANDARIA SELATAN</option>
+							<option th:value="24">CIPETE SELATAN</option>
+							<option th:value="25">BINTARO</option>
+							<option th:value="26">PESANGGRAHAN</option>
+							<option th:value="27">ULUJAMI</option>
+							<option th:value="28">PETUKANGAN SELATAN</option>
+							<option th:value="29">PETUKANGAN UTARA</option>
+							<option th:value="30">PONDOK PINANG</option>
+							<option th:value="31">KEBAYORAN LAMA SELATAN</option>
+							<option th:value="32">KEBAYORAN LAMA UTARA</option>
+							<option th:value="33">CIPULIR</option>
+							<option th:value="34">GROGOL SELATAN</option>
+							<option th:value="35">GROGOL UTARA</option>
+							<option th:value="36">GANDARIA UTARA</option>
+							<option th:value="37">CIPETE UTARA</option>
+							<option th:value="38">PULO</option>
+							<option th:value="39">PETOGOGAN</option>
+							<option th:value="40">MELAWAI</option>
+							<option th:value="41">KRAMAT PELA</option>
+							<option th:value="42">GUNUNG</option>
+							<option th:value="43">SELONG</option>
+							<option th:value="44">RAWA BARAT</option>
+							<option th:value="45">SENAYAN</option>
+							<option th:value="46">BANGKA</option>
+							<option th:value="47">PELA MAMPANG</option>
+							<option th:value="48">TEGAL PARANG</option>
+							<option th:value="49">MAMPANG PRAPATAN</option>
+							<option th:value="50">KUNINGAN BARAT</option>
+							<option th:value="51">KALIBATA</option>
+							<option th:value="52">RAWAJATI</option>
+							<option th:value="53">DUREN TIGA</option>
+							<option th:value="54">PANCORAN</option>
+							<option th:value="55">PENGADEGAN</option>
+							<option th:value="56">CIKOKO</option>
+							<option th:value="57">MENTENG DALAM</option>
+							<option th:value="58">TEBET BARAT</option>
+							<option th:value="59">TEBET TIMUR</option>
+							<option th:value="60">KEBON BARU</option>
+							<option th:value="61">BUKIT DURI</option>
+							<option th:value="62">MANGGARAI SELATAN</option>
+							<option th:value="63">MANGGARAI</option>
+							<option th:value="64">KARET SEMANGGI</option>
+							<option th:value="65">KUNINGAN TIMUR</option>
+							<option th:value="66">KARET KUNINGAN</option>
+							<option th:value="67">KARET</option>
+							<option th:value="68">MENTENG ATAS</option>
+							<option th:value="69">PASAR MANGGIS</option>
+							<option th:value="70">GUNTUR</option>
+							<option th:value="71">SETIA BUDI</option>
+							<option th:value="72">PEKAYON</option>
+							<option th:value="73">KALISARI</option>
+							<option th:value="74">BARU</option>
+							<option th:value="75">CIJANTUNG</option>
+							<option th:value="76">GEDONG</option>
+							<option th:value="77">CIBUBUR</option>
+							<option th:value="78">KELAPA DUA WETAN</option>
+							<option th:value="79">CIRACAS</option>
+							<option th:value="80">SUSUKAN</option>
+							<option th:value="81">RAMBUTAN</option>
+							<option th:value="82">PONDOK RANGGON</option>
+							<option th:value="83">CILANGKAP</option>
+							<option th:value="84">MUNJUL</option>
+							<option th:value="85">CIPAYUNG</option>
+							<option th:value="86">SETU</option>
+							<option th:value="87">BAMBU APUS</option>
+							<option th:value="88">CEGER</option>
+							<option th:value="89">LUBANG BUAYA</option>
+							<option th:value="90">PINANG RANTI</option>
+							<option th:value="91">MAKASAR</option>
+							<option th:value="92">KEBON PALA</option>
+							<option th:value="93">HALIM PERDANA KUSUMAH</option>
+							<option th:value="94">CIPINANG MELAYU</option>
+							<option th:value="95">BALE KAMBANG</option>
+							<option th:value="96">BATU AMPAR</option>
+							<option th:value="97">KAMPUNG TENGAH</option>
+							<option th:value="98">DUKUH</option>
+							<option th:value="99">KRAMAT JATI</option>
+							<option th:value="100">CILILITAN</option>
+							<option th:value="101">CAWANG</option>
+							<option th:value="102">BIDARA CINA</option>
+							<option th:value="103">CIPINANG CEMPEDAK</option>
+							<option th:value="104">CIPINANG BESAR SELATAN</option>
+							<option th:value="105">CIPINANG MUARA</option>
+							<option th:value="106">CIPINANG BESAR UTARA</option>
+							<option th:value="107">RAWA BUNGA</option>
+							<option th:value="108">BALI MESTER</option>
+							<option th:value="109">KAMPUNG MELAYU</option>
+							<option th:value="110">PONDOK BAMBU</option>
+							<option th:value="111">DUREN SAWIT</option>
+							<option th:value="112">PONDOK KELAPA</option>
+							<option th:value="113">PONDOK KOPI</option>
+							<option th:value="114">MALAKA JAYA</option>
+							<option th:value="115">MALAKA SARI</option>
+							<option th:value="116">KLENDER</option>
+							<option th:value="117">JATINEGARA</option>
+							<option th:value="118">PENGGILINGAN</option>
+							<option th:value="119">PULO GEBANG</option>
+							<option th:value="120">UJUNG MENTENG</option>
+							<option th:value="121">CAKUNG TIMUR</option>
+							<option th:value="122">CAKUNG BARAT</option>
+							<option th:value="123">RAWA TERATE</option>
+							<option th:value="124">PISANGAN TIMUR</option>
+							<option th:value="125">CIPINANG</option>
+							<option th:value="126">JATINEGARA KAUM</option>
+							<option th:value="127">JATI</option>
+							<option th:value="128">RAWAMANGUN</option>
+							<option th:value="129">KAYU PUTIH</option>
+							<option th:value="130">PULO GADUNG</option>
+							<option th:value="131">KEBON MANGGIS</option>
+							<option th:value="132">PAL MERIEM</option>
+							<option th:value="133">PISANGAN BARU</option>
+							<option th:value="134">KAYU MANIS</option>
+							<option th:value="135">UTAN KAYU SELATAN</option>
+							<option th:value="136">UTAN KAYU UTARA</option>
+							<option th:value="137">GELORA</option>
+							<option th:value="138">BENDUNGAN HILIR</option>
+							<option th:value="139">KARET TENGSIN</option>
+							<option th:value="140">KEBON MELATI</option>
+							<option th:value="141">PETAMBURAN</option>
+							<option th:value="142">KEBON KACANG</option>
+							<option th:value="143">KAMPUNG BALI</option>
+							<option th:value="144">MENTENG</option>
+							<option th:value="145">PEGANGSAAN</option>
+							<option th:value="146">CIKINI</option>
+							<option th:value="147">GONDANGDIA</option>
+							<option th:value="148">KEBON SIRIH</option>
+							<option th:value="149">KENARI</option>
+							<option th:value="150">PASEBAN</option>
+							<option th:value="151">KRAMAT</option>
+							<option th:value="152">KWITANG</option>
+							<option th:value="153">SENEN</option>
+							<option th:value="154">BUNGUR</option>
+							<option th:value="155">JOHAR BARU</option>
+							<option th:value="156">KAMPUNG RAWA</option>
+							<option th:value="157">TANAH TINGGI</option>
+							<option th:value="158">GALUR</option>
+							<option th:value="159">RAWA SARI</option>
+							<option th:value="160">CEMPAKA PUTIH TIMUR</option>
+							<option th:value="161">CEMPAKA PUTIH BARAT</option>
+							<option th:value="162">HARAPAN MULYA</option>
+							<option th:value="163">CEMPAKA BARU</option>
+							<option th:value="164">SUMUR BATU</option>
+							<option th:value="165">SERDANG</option>
+							<option th:value="166">UTAN PANJANG</option>
+							<option th:value="167">KEBON KOSONG</option>
+							<option th:value="168">KEMAYORAN</option>
+							<option th:value="169">GUNUNG SAHARI SELATAN</option>
+							<option th:value="170">PASAR BARU</option>
+							<option th:value="171">GUNUNG SAHARI UTARA</option>
+							<option th:value="172">KARTINI</option>
+							<option th:value="173">KARANG ANYAR</option>
+							<option th:value="174">MANGGA DUA SELATAN</option>
+							<option th:value="175">CIDENG</option>
+							<option th:value="176">PETOJO SELATAN</option>
+							<option th:value="177">GAMBIR</option>
+							<option th:value="178">KEBON KELAPA</option>
+							<option th:value="179">PETOJO UTARA</option>
+							<option th:value="180">DURI PULO</option>
+							<option th:value="181">JOGLO</option>
+							<option th:value="182">SRENGSENG</option>
+							<option th:value="183">MERUYA SELATAN</option>
+							<option th:value="184">MERUYA UTARA</option>
+							<option th:value="185">KEMBANGAN SELATAN</option>
+							<option th:value="186">KEMBANGAN UTARA</option>
+							<option th:value="187">SUKABUMI SELATAN</option>
+							<option th:value="188">SUKABUMI UTARA</option>
+							<option th:value="189">KELAPA DUA</option>
+							<option th:value="190">KEBON JERUK</option>
+							<option th:value="191">DURI KEPA</option>
+							<option th:value="192">KEDOYA SELATAN</option>
+							<option th:value="193">KEDOYA UTARA</option>
+							<option th:value="194">PALMERAH</option>
+							<option th:value="195">SLIPI</option>
+							<option th:value="196">KEMANGGISAN</option>
+							<option th:value="197">KOTA BAMBU UTARA</option>
+							<option th:value="198">KOTA BAMBU SELATAN</option>
+							<option th:value="199">JATI PULO</option>
+							<option th:value="200">TANJUNG DUREN UTARA</option>
+							<option th:value="201">TANJUNG DUREN SELATAN</option>
+							<option th:value="202">TOMANG</option>
+							<option th:value="203">GROGOL</option>
+							<option th:value="204">JELAMBAR</option>
+							<option th:value="205">WIJAYA KESUMA</option>
+							<option th:value="206">JELAMBAR BARU</option>
+							<option th:value="207">KALIANYAR</option>
+							<option th:value="208">DURI SELATAN</option>
+							<option th:value="209">TANAH SEREAL</option>
+							<option th:value="210">DURI UTARA</option>
+							<option th:value="211">KRENDANG</option>
+							<option th:value="212">JEMBATAN BESI</option>
+							<option th:value="213">ANGKE</option>
+							<option th:value="214">JEMBATAN LIMA</option>
+							<option th:value="215">TAMBORA</option>
+							<option th:value="216">ROA MALAKA</option>
+							<option th:value="217">PEKOJAN</option>
+							<option th:value="218">KRUKUT</option>
+							<option th:value="219">MAPHAR</option>
+							<option th:value="220">TAMAN SARI</option>
+							<option th:value="221">TANGKI</option>
+							<option th:value="222">MANGGA BESAR</option>
+							<option th:value="223">KEAGUNGAN</option>
+							<option th:value="224">GLODOK</option>
+							<option th:value="225">PINANGSIA</option>
+							<option th:value="226">DURI KOSAMBI</option>
+							<option th:value="227">RAWA BUAYA</option>
+							<option th:value="228">KEDAUNG KALI ANGKE</option>
+							<option th:value="229">KAPUK</option>
+							<option th:value="230">CENGKARENG TIMUR</option>
+							<option th:value="231">CENGKARENG BARAT</option>
+							<option th:value="232">SEMANAN</option>
+							<option th:value="233">KALIDERES</option>
+							<option th:value="234">PEGADUNGAN</option>
+							<option th:value="235">TEGAL ALUR</option>
+							<option th:value="236">KAMAL</option>
+							<option th:value="237">KAMAL MUARA</option>
+							<option th:value="238">KAPUK MUARA</option>
+							<option th:value="239">PEJAGALAN</option>
+							<option th:value="240">PENJARINGAN</option>
+							<option th:value="241">PLUIT</option>
+							<option th:value="242">PADEMANGAN BARAT</option>
+							<option th:value="243">PADEMANGAN TIMUR</option>
+							<option th:value="244">ANCOL</option>
+							<option th:value="245">SUNTER AGUNG</option>
+							<option th:value="246">SUNTER JAYA</option>
+							<option th:value="247">PAPANGO</option>
+							<option th:value="248">WARAKAS</option>
+							<option th:value="249">SUNGAI BAMBU</option>
+							<option th:value="250">KEBON BAWANG</option>
+							<option th:value="251">TANJUNG PRIUK</option>
+							<option th:value="252">RAWABADAK SELATAN</option>
+							<option th:value="253">TUGU SELATAN</option>
+							<option th:value="254">TUGU UTARA</option>
+							<option th:value="255">LAGOA</option>
+							<option th:value="256">RAWABADAK UTARA</option>
+							<option th:value="257">KOJA</option>
+							<option th:value="258">KELAPA GADING BARAT</option>
+							<option th:value="259">KELAPA GADING TIMUR</option>
+							<option th:value="260">PEGANGSAAN DUA</option>
+							<option th:value="261">SUKA PURA</option>
+							<option th:value="262">ROROTAN</option>
+							<option th:value="263">MARUNDA</option>
+							<option th:value="264">CILINCING</option>
+							<option th:value="265">SEMPER TIMUR</option>
+							<option th:value="266">SEMPER BARAT</option>
+							<option th:value="267">KALI BARU</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="kode_kecamatan">Kecamatan
+						:</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="kode_kecamatan"
+							name="kode_kecamatan" th:field="*{kode_kecamatan}"
+							required="required">
+							<option th:value="3101010">KEPULAUAN SERIBU SELATAN</option>
+							<option th:value="3101020">KEPULAUAN SERIBU UTARA</option>
+							<option th:value="3171010">JAGAKARSA</option>
+							<option th:value="3171020">PASAR MINGGU</option>
+							<option th:value="3171030">CILANDAK</option>
+							<option th:value="3171040">PESANGGRAHAN</option>
+							<option th:value="3171050">KEBAYORAN LAMA</option>
+							<option th:value="3171060">KEBAYORAN BARU</option>
+							<option th:value="3171070">MAMPANG PRAPATAN</option>
+							<option th:value="3171080">PANCORAN</option>
+							<option th:value="3171090">TEBET</option>
+							<option th:value="3171100">SETIA BUDI</option>
+							<option th:value="3172010">PASAR REBO</option>
+							<option th:value="3172020">CIRACAS</option>
+							<option th:value="3172030">CIPAYUNG</option>
+							<option th:value="3172040">MAKASAR</option>
+							<option th:value="3172050">KRAMAT JATI</option>
+							<option th:value="3172060">JATINEGARA</option>
+							<option th:value="3172070">DUREN SAWIT</option>
+							<option th:value="3172080">CAKUNG</option>
+							<option th:value="3172090">PULO GADUNG</option>
+							<option th:value="3172100">MATRAMAN</option>
+							<option th:value="3173010">TANAH ABANG</option>
+							<option th:value="3173020">MENTENG</option>
+							<option th:value="3173030">SENEN</option>
+							<option th:value="3173040">JOHAR BARU</option>
+							<option th:value="3173050">CEMPAKA PUTIH</option>
+							<option th:value="3173060">KEMAYORAN</option>
+							<option th:value="3173070">SAWAH BESAR</option>
+							<option th:value="3173080">GAMBIR</option>
+							<option th:value="3174010">KEMBANGAN</option>
+							<option th:value="3174020">KEBON JERUK</option>
+							<option th:value="3174030">PALMERAH</option>
+							<option th:value="3174040">GROGOL PETAMBURAN</option>
+							<option th:value="3174050">TAMBORA</option>
+							<option th:value="3174060">TAMAN SARI</option>
+							<option th:value="3174070">CENGKARENG</option>
+							<option th:value="3174080">KALI DERES</option>
+							<option th:value="3175010">PENJARINGAN</option>
+							<option th:value="3175020">PADEMANGAN</option>
+							<option th:value="3175030">TANJUNG PRIOK</option>
+							<option th:value="3175040">KOJA</option>
+							<option th:value="3175050">KELAPA GADING</option>
+							<option th:value="3175060">CILINCING</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="kode_kota">Kota
+						:</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="kode_kota" name="kode_kota"
+							th:field="*{kode_kota}" required="required">
+							<option th:value="1">KABUPATEN KEPULAUAN SERIBU</option>
+							<option th:value="2">KOTA JAKARTA SELATAN</option>
+							<option th:value="3">KOTA JAKARTA TIMUR</option>
+							<option th:value="4">KOTA JAKARTA PUSAT</option>
+							<option th:value="5">KOTA JAKARTA BARAT</option>
+							<option th:value="6">KOTA JAKARTA UTARA</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

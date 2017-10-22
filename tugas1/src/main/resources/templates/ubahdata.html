@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+<title>Ubah Penduduk</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet">
+</link>
+
+<style th:replace="fragments/fragment :: style"></style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script th:inline="javascript">
+	function myFunctionNik() {
+		var x = document.getElementById("nik").value;
+		location.replace("//localhost:8080/penduduk/ubah/" + x)
+	}
+	function myFunctionNkk() {
+		var x = document.getElementById("nkk").value;
+		location.replace("//localhost:8080/keluarga/ubah/" + x)
+	}
+</script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<h3>Ubah Data Penduduk dan Data Keluarga</h3>
+			<hr></hr>
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h2 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion"
+								href="#collapse1">Ubah Data Penduduk Berdasarkan NIK</a>
+						</h2>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<div class="form-group row">
+								<div class="col-xs-4">
+									<label for="nik">Masukan Nomor Induk Kependudukan</label> <input
+										type="text" class="form-control" id="nik" name="nik"></input>
+								</div>
+							</div>
+							<div>
+								<button class="btn btn-primary" onclick="myFunctionNik()">Cari</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr></hr>
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion"
+								href="#collapse2">Ubah Data Keluarga Berdasarkan NKK</a>
+						</h4>
+					</div>
+					<div id="collapse2" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<div class="form-group row">
+								<div class="col-xs-4">
+									<label for="nik">Masukan Nomor Kartu Keluarga</label> <input
+										type="text" class="form-control" id="nkk" name="nkk"></input>
+								</div>
+							</div>
+							<div>
+								<button class="btn btn-primary" onclick="myFunctionNkk()">Cari</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr></hr>
+		</div>
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

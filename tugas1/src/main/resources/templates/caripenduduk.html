@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>Starter Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet"></link>
+<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+<link rel="stylesheet" type="text/css"
+	th:href="@{https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css}" />
+<script type="text/javascript" charset="utf-8"
+	th:src="@{http://cdn.datatables.net/1.10.16/js/jquery.dataTables.js}"></script>
+<style th:replace="fragments/fragment :: style"></style>
+<script>
+$(document).ready(function() {
+	$('#myTable').DataTable();
+});
+</script>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<form id="cari" class="form-horizontal" action="/penduduk/cari"
+				method="get">
+				<div class="row">
+					<div class="col-sm-10">
+						<h4
+							th:text="${id_kota} == null ? 'Lihat Data Penduduk Berdasarkan Kota'">Student
+							Name</h4>
+						<h4
+							th:text="${hide_kecamatan} == true and ${id_kecamatan} == null ? 'Lihat Data Penduduk Berdasarkan Kecamatan di ' + ${nama_kota}">Student
+							Name</h4>
+						<h4
+							th:text="${hide_kelurahan} == true and ${id_kelurahan} == null ? 'Lihat Data Penduduk Berdasarkan Kelurahan di ' + ${nama_kota} + ', ' + ${nama_kecamatan}">Student
+							Name</h4>
+					</div>
+				</div>
+				<hr></hr>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="id_kota">Kota :</label>
+					<div class="col-sm-4">
+						<select th:if="${id_kota} == null" class="form-control"
+							id="id_kota" name="id_kota" required="required">
+							<option hidden="hidden" value="">Pilih Kota</option>
+							<option th:each="kota : ${kota}" th:value="${kota.id}"
+								th:text="${kota.nama_kota}">Credit card</option>
+						</select> <input th:if="${id_kota} != null" type="hidden"
+							class="form-control" id="id_kota" name="id_kota" readonly="true"
+							th:value="*{id_kota}" /> <input th:if="${id_kota} != null"
+							type="text" class="form-control" readonly="true"
+							th:value="*{nama_kota}" />
+
+					</div>
+				</div>
+				<div id="hide_kecamatan">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="id_kecamatan">Kecamatan
+							:</label>
+						<div class="col-sm-4">
+							<select th:if="${id_kecamatan} == null" class="form-control"
+								id="id_kecamatan" name="id_kecamatan">
+								<option hidden="hidden" value="">Pilih Kecamatan</option>
+								<option th:each="kecamatan : ${kecamatan}"
+									th:value="${kecamatan.id}"
+									th:text="${kecamatan.nama_kecamatan}">Credit card</option>
+							</select> <input th:if="${id_kecamatan} != null" type="hidden"
+								class="form-control" id="id_kecamatan" name="id_kecamatan"
+								readonly="true" th:value="*{id_kecamatan}" /> <input
+								th:if="${id_kecamatan} != null" type="text" class="form-control"
+								readonly="true" th:value="*{nama_kecamatan}" />
+						</div>
+					</div>
+				</div>
+				<div id="hide_kelurahan">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="id_kelurahan">Kelurahan
+							:</label>
+						<div class="col-sm-4">
+							<select th:if="${id_kelurahan} == null" class="form-control"
+								id="id_kelurahan" name="id_kelurahan">
+								<option th:each="kelurahan : ${kelurahan}"
+									th:value="${kelurahan.id}"
+									th:text="${kelurahan.nama_kelurahan}">Credit card</option>
+							</select> <input th:if="${id_kelurahan} != null" type="hidden"
+								class="form-control" id="id_kelurahan" name="id_kelurahan"
+								readonly="true" th:value="*{id_kelurahan}" /> <input
+								th:if="${id_kelurahan} != null" type="text" class="form-control"
+								readonly="true" th:value="*{nama_kelurahan}" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Cari</button>
+					</div>
+				</div>
+			</form>
+			<h4
+				th:text="${cari_submit} == false ? 'Lihat Data Penduduk di ' + ${nama_kota} + ', ' + ${nama_kecamatan} + ', Kelurahan ' + ${nama_kelurahan}">Student
+				Name</h4>
+			<div th:if="${cari_submit} == false">
+				<hr></hr>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Penduduk Dengan Usia Termuda</div>
+							<div class="panel-body">
+								<table class="table table-condensed">
+									<tbody>
+										<tr>
+											<td>NIK</td>
+											<td th:text="${penduduk_muda.nik}">NIK</td>
+										</tr>
+										<tr>
+											<td>Nama</td>
+											<td th:text="${penduduk_muda.nama}">Nama</td>
+										</tr>
+										<tr>
+											<td>Tanggal Lahir</td>
+											<td th:text="${penduduk_muda.tanggal_lahir}">Tanggal
+												Lahir</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="panel panel-default">
+							<div class="panel-heading">Penduduk Dengan Usia Tertua</div>
+							<div class="panel-body">
+								<table class="table table-condensed">
+									<tbody>
+										<tr>
+											<td>NIK</td>
+											<td th:text="${penduduk_tua.nik}">NIK</td>
+										</tr>
+										<tr>
+											<td>Nama</td>
+											<td th:text="${penduduk_tua.nama}">Nama</td>
+										</tr>
+										<tr>
+											<td>Tanggal Lahir</td>
+											<td th:text="${penduduk_tua.tanggal_lahir}">Tanggal
+												Lahir</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<table id="myTable" class="display">
+							<thead>
+								<tr>
+									<th>No.</th>
+									<th>NIK</th>
+									<th>Nama Lengkap</th>
+									<th>Jenis Kelamin</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="penduduk,iterationStatus: ${penduduk}">
+									<td th:text="${iterationStatus.count}">No. 1</td>
+									<td th:text="${penduduk.nik}">Nama</td>
+									<td th:text="${penduduk.nama}">Nama</td>
+									<td
+										th:text="${penduduk.jenis_kelamin == 1 ? 'Perempuan' : 'Laki-laki'}">Nama</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br /> <br /> <br />
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<!-- /.container -->
+
+	<script th:inline="javascript">
+		var x = document.getElementById("hide_kecamatan");
+		var hide_kecamatan = [[${hide_kecamatan}]];
+		if (hide_kecamatan == false) {
+			x.style.display = "none";
+		}
+		var y = document.getElementById("hide_kelurahan");
+		var hide_kelurahan = [[${hide_kelurahan}]];
+		if (hide_kelurahan == false) {
+			y.style.display = "none";
+		}
+		var z = document.getElementById("cari");
+		var cari_submit = [[${cari_submit}]];
+		if (cari_submit == false) {
+			z.style.display = "none";
+		}
+	</script>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>

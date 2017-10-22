@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet">
+</link>
+
+<style th:replace="fragments/fragment :: style"></style>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+			<h5 class="lead">Selamat datang di Sistem Informasi Kependudukan
+				Online Provinsi DKI Jakarta</h5>
+			<hr></hr>
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion"
+								href="#collapse1">Lihat Data Penduduk Berdasarkan NIK</a>
+						</h4>
+					</div>
+					<div id="collapse1" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<form action="/penduduk" method="get">
+								<div class="form-group row">
+									<div class="col-xs-4">
+										<label for="nik">Masukan Nomor Induk Kependudukan</label> <input
+											type="text" class="form-control" id="nik" name="nik" required = "true"></input>
+									</div>
+								</div>
+								<div>
+									<button type="submit" class="btn btn-primary">Lihat</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr></hr>
+			<div class="panel-group" id="accordion">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion"
+								href="#collapse2">Lihat Data Keluarga Berdasarkan NKK</a>
+						</h4>
+					</div>
+					<div id="collapse2" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<form action="/keluarga" method="get">
+								<div class="form-group row">
+									<div class="col-xs-4">
+										<label for="nkk">Masukan Nomor Kartu Keluarga</label> <input
+											type="text" class="form-control" id="nkk" name="nkk" required = "true"></input>
+									</div>
+								</div>
+								<div>
+									<button type="submit" class="btn btn-primary">Lihat</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr></hr>
+		</div>
+		<br />
+		<br />
+		<br />
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style th:fragment="style">
+/* Add a dark background color to the footer */
+footer{
+   background-color: #e6e6e6;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    text-align: center;
+    color: #666666;
+}
+
+footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}
+</style>
+</head>
+<body>
+	<div th:fragment="header">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">SI Kependudukan</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#">Tambah Data Kependudukan<span
+							class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="nav-link" href="/penduduk/tambah">Tambah
+									Penduduk</a></li>
+							<li><a class="nav-link" href="/keluarga/tambah">Tambah
+									Keluarga</a></li>
+						</ul>
+					</li>
+					<li><a class="nav-link" href="/data/ubah">Ubah Data Kependudukan</a></li>
+					<li><a class="nav-link" href="/penduduk/cari">Cari
+							Penduduk</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<form class="navbar-form">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search"></input>
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div th:fragment="footer">
+		<footer>
+        <p>&reg; 2017 Sistem Informasi Kependudukan Online Provinsi DKI Jakarta, All rights reserved 2017-2018.</p>
+    </footer>
+	</div>
+</body>
+</html>

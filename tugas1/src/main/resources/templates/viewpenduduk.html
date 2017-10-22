@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>Starter Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet">
+</link>
+<style th:replace="fragments/fragment :: style"></style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<h3 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}"
+				style="font-weight: bold;">Data Penduduk</h3>
+			<hr />
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">NIK</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.nik}">Student NPM</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Nama</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.nama}">Student Name</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Tempat/ Tanggal Lahir</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5
+								th:text="${penduduk.tempat_lahir} + ', ' + ${penduduk.tanggal_lahir}">Student
+								GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Alamat</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${keluarga.alamat}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">RT/RW</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${keluarga.rt} + '/' + ${keluarga.rw}">Student
+								GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Kelurahan/Desa</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${alamat.nama_kelurahan}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Kecamatan</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${alamat.nama_kecamatan}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Kota</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${alamat.nama_kota}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Golongan Darah</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.golongan_darah}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Agama</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.agama}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Status Perkawianan</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.status_perkawinan}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Pekerjaan</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.pekerjaan}">Student GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Kewarganegaraan</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.is_wni} == 1 ? 'WNI' : 'WNA'">Student
+								GPA</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<h5 style="font-weight: bold;">Status Kematian</h5>
+						</div>
+						<div class="col-sm-4">
+							<h5 th:text="${penduduk.is_wafat} == 0 ? 'Hidup' : 'Mati'">Student
+								GPA</h5>
+						</div>
+					</div>
+					<div id="hide">
+						<form class="form-horizontal" action="/penduduk/mati"
+							th:object="${penduduk}" method="post">
+							<input type="hidden" class="form-control" id="nik" name="nik"
+								th:field="*{nik}" /> <input type="hidden" class="form-control"
+								id="is_wafat" name="is_wafat" th:field="*{is_wafat}" />
+							<div class="form-group">
+								<div class="col-sm-offset-4 col-sm-4">
+									<button type="submit" class="btn btn-danger">Nonaktifkan</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br /> <br /> <br />
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<script th:inline="javascript">
+		var x = document.getElementById("hide");
+		var status_kematian = [[${penduduk.is_wafat}]];
+		if (status_kematian == 1) {
+			x.style.display = "none";
+		}
+	</script>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

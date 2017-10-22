@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>Sukses !</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet">
+</link>
+<style th:replace="fragments/fragment :: style"></style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<h1>Sukses !</h1>
+			<!-- IF Condition -->
+			<div th:if="${status} == 'penduduk'">
+				<h3
+					th:text="'Penduduk dengan NIK ' + ${penduduk} + ' berhasil ditambahkan'">Student
+					NPM</h3>
+			</div>
+			<!-- ELSE -->
+			<div th:if="${status} == 'keluarga'">
+				<h3
+					th:text="'Keluarga dengan NKK ' + ${keluarga} + ' berhasil ditambahkan'">Student
+					NPM</h3>
+			</div>
+			<!-- ELSE -->
+			<div th:if="${status} == 'ubahpenduduk'">
+				<h3
+					th:text="'Penduduk dengan NIK ' + ${penduduk} + ' berhasil diubah'">Student
+					NPM</h3>
+			</div>
+			<!-- ELSE -->
+			<div th:if="${status} == 'ubahkeluarga'">
+				<h3
+					th:text="'keluarga dengan NKK ' + ${keluarga} + ' berhasil diubah'">Student
+					NPM</h3>
+			</div>
+			<!-- ELSE -->
+			<div th:if="${status} == 'ubahkematian'">
+				<h3 th:text="'penduduk dengan NIK ' + ${nik} + ' sudah tidak aktif'">Student
+					NPM</h3>
+			</div>
+		</div>
+	</div>
+
+	<script th:inline="javascript">
+		var status = [[${status}]];
+		if (status == "penduduk") {
+			window.setTimeout(function() {
+				window.location.href = 'http://localhost:8080/penduduk/tambah';
+			}, 4000);
+		}
+		if (status == "keluarga") {
+			window.setTimeout(function() {
+				window.location.href = 'http://localhost:8080/keluarga/tambah';
+			}, 4000);
+		}
+		if (status == "ubahpenduduk") {
+			window.setTimeout(function() {
+				window.location.href = 'http://localhost:8080/penduduk/ubah/' + [[${new_nik}]];
+			}, 4000);
+		}
+		if (status == "ubahkeluarga") {
+			window.setTimeout(function() {
+				window.location.href = 'http://localhost:8080/keluarga/ubah/' + [[${new_nkk}]];
+			}, 4000);
+		}
+		if (status == "ubahkematian") {
+			window.setTimeout(function() {
+				window.location.href = 'http://localhost:8080/penduduk?nik=' + [[${nik}]];
+			}, 4000);
+		}
+	</script>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

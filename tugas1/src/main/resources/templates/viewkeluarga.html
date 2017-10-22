@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+<meta name="description" content=""></meta>
+<meta name="author" content=""></meta>
+
+<title>Starter Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet">
+</link>
+<style th:replace="fragments/fragment :: style"></style>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container">
+		<div class="starter-template">
+			<h3 th:text="'Lihat Data Keluarga - ' + ${nkk}"
+				style="font-weight: bold;">Data Penduduk</h3>
+			<hr />
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-sm-4">
+									<h4 style="font-weight: bold;">NKK</h4>
+									<h4 style="font-weight: bold;">Alamat</h4>
+									<h4 style="font-weight: bold;">RT/RW</h4>
+									<h4 style="font-weight: bold;">Kelurahan/Desa</h4>
+									<h4 style="font-weight: bold;">Kecamatan</h4>
+									<h4 style="font-weight: bold;">Kota</h4>
+								</div>
+								<div class="col-sm-8">
+									<h4 th:text="${nkk}">Student NPM</h4>
+									<h4 th:text="${keluarga.alamat}">Student GPA</h4>
+									<h4 th:text="${keluarga.rt} + '/' + ${keluarga.rw}">Student
+										GPA</h4>
+									<h4 th:text="${alamat.nama_kelurahan}">Student GPA</h4>
+									<h4 th:text="${alamat.nama_kecamatan}">Student GPA</h4>
+									<h4 th:text="${alamat.nama_kota}">Student GPA</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table class="table">
+						<thead>
+							<tr class="active">
+								<th>No.</th>
+								<th>Nama Lengkap</th>
+								<th>NIK</th>
+								<th>Jenis Kelamin</th>
+								<th>Tempat Lahir</th>
+								<th>Tanggal Lahir</th>
+								<th>Agama</th>
+								<th>Pekerjaan</th>
+								<th>Status Perkawinan</th>
+								<th>Status dalam Keluarga</th>
+								<th>Kewarganegaraan</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="anggota,iterationStatus: ${anggota}">
+								<td th:text="${iterationStatus.count}">No. 1</td>
+								<td th:text="${anggota.nama}">Nama</td>
+								<td th:text="${anggota.nik}">Nama</td>
+								<td
+									th:text="${anggota.jenis_kelamin == 1 ? 'Perempuan' : 'Laki-laki'}">Nama</td>
+								<td th:text="${anggota.tempat_lahir}">Nama</td>
+								<td th:text="${anggota.tanggal_lahir}">Nama</td>
+								<td th:text="${anggota.agama}">Nama</td>
+								<td th:text="${anggota.pekerjaan}">Nama</td>
+								<td th:text="${anggota.status_perkawinan}">Nama</td>
+								<td th:text="${anggota.status_dalam_keluarga}">Nama</td>
+								<td th:text="${anggota.is_wni} == 1 ? 'WNI' : 'WNA'">Nama</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<br /> <br /> <br />
+	</div>
+	<div th:replace="fragments/fragment :: footer"></div>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
